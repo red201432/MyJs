@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf8">
+	<title>Javascript chapter 3</title>
+	<script type="text/javascript">
+	var now=new Date();
+	// alert(typeof(now));//Object
+	// alert(now+1);//string 
+	print(now==now.toString());
+	print(now>now-1); //true ">" 将日期转换为数字
+	var a=100;
+	function test(){
+		a=90;
+		var a;//如果不在函数内声明，那么对a的修改，就是修改的全局的a,如果声明了a,那么即使声明在a的修改之后，修改的仍然是函数内的a，这个特性称为声明提前，即Javascript函数内声明的所有变量都被提前倒函数体的顶部
+		print(a);
+	}
+	test();
+	print(a);
+	function print(e){
+		console.log(e);
+	}
+	var scope="global";
+	function TestForVar(){
+		print(scope);
+		var scope="local";
+		print(scope);
+	}
+	TestForVar();
+
+	var point=function(){x=0, y=0};
+	print(point);
+	point.x=12;
+	point.y=23;
+	var points=[];
+	points.push(point);
+	points.push(new point(2,3));
+	print(points);
+	var book={
+		publishtime:undefined,
+		"main title":"Javascript",				//属性名有空格，必须用字符串表示
+		"sub-title":"The Definitive Guide",		//属性名有 -  必须用字符串表示
+		"for":"all ",							//属性名有关键字 ，必须用字符串表示
+		anthor:{
+			firstname:"David",
+			surname:"Flanagan"			
+		}		
+	}
+	print("main title" in book);
+	print("anthor" in book);					// in 检测是否是对象的属性 返回true
+	print(book.hasOwnProperty("main title"));	//hasOwnProperty()方法用来检测给定名字是否是对象的自有属性
+	print(book.hasOwnProperty("author"));		//返回false
+	print(book.propertyIsEnumerable("author"));	//返回false 只有检测到自有属性，且这个属性的可枚举性是true时，返回true。
+	print("fadaf" in book);
+	print(book["main title"]!== undefined);	
+	print("publishtime" in book);	
+	var p=Object.create(point);					//通过原型的方式创建新的对象
+	print(p);
+	print(p.isPrototypeOf(point));
+	print(point.isPrototypeOf(p));				//返回 true 。point 是 p的原型
+	print(Object.prototype.isPrototypeOf(p));	// Object 是 p的原型
+	print(point.toString());					//返回的是 对象的 定义
+	print(classOf(p));
+
+	function classOf(o){						//返回任意对象的类
+		if(o===null) return "NULL";
+		if(o===undefined) return "Undefined";
+		return Object.prototype.toString.call(o).slice(8, -1);// 正数第八个到倒数第二个之间的字符
+	}
+
+	print(classOf(1));
+	Object.preventExtensions(p);				//将对象转换为不可扩展的
+	print(Object.isExtensible(p));				// 判断对象是否是可扩展的
+
+	a={x:1,y:{z:[false,null,""]}};
+	s=JSON.stringify(a);						//
+	print(s);
+	m=JSON.parse(s);							// m 是 s 的深拷贝
+	print(m);
+
+// 	function showIframeH(){
+//     var parentWin = parent.document.getElementById("test");
+//     if(!parentWin) return false;
+    
+//     var sub = parentWin.contentWindow.document.getElementById("test2");
+//     if(!sub) return false;
+    
+//     var thirdHeight = sub.contentWindow.document.body.offsetHeight; //第三层 body 对象
+    
+//     sub.height = thirdHeight; //设置第二层 iframe 的高度
+    
+//     var secondHeight = x.contentWindow.document.body.offsetHeight; //第二层 body 对象
+//     x.height = secondHeight; //设置第一层 iframe 的高度
+//     //alert(secondHeight);
+//     //alert('body: ' + x.contentDocument.body.offsetHeight + ' div:' + thirdHeight);
+// }
+
+	function show(e){
+		alert(e.innerHTML);
+
+	}
+
+	var o={};	//a new Object
+	Object.defineProperty(o,"x",{//为对象定义一个新的属性，以及属性设置
+		value:1,
+		writable:false,
+		enumerable:false,
+		configurable:true
+	});
+	print(o.x);
+	o.x=232;
+	print(o.x);
+
+	Object.defineProperties(o,{y:{value:2,//为对象定义一组新的属性，以及属性设置
+		writable:false,
+		enumerable:false,
+		configurable:true},z:{value:3,
+		writable:false,
+		enumerable:false,
+		configurable:true}});
+
+	print(o.y);
+	print(o.z);
+	print(Object.getOwnPropertyDescriptor(o,"y"));//第一个参数 对象，第二个参数 属性名
+	</script>
+</head>
+<body>
+<!-- iframe src="http://www.baidu.com" id="test">
+	<iframe src="http://www.baidu.com" id="test2"></iframe>
+</iframe> -->
+	<div>
+		<label onclick="show(this);" value="123">1232435</label>
+	</div>
+</body>
+</html>

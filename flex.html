@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Flex</title>
+	<style type="text/css">
+  body{
+    background-image: url(./14152173_144920640110_2.jpg);
+    background-size: 100%;
+      }
+.first-face {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.second-face {
+  display: flex;
+  justify-content: space-between;
+}
+
+.second-face .pip:nth-of-type(2) {
+  align-self: flex-end;
+}
+
+.third-face {
+  display: flex;
+  justify-content: space-between;
+}
+  
+.third-face .pip:nth-of-type(2) {
+  align-self: center;
+}
+
+.third-face .pip:nth-of-type(3) {
+  align-self: flex-end;
+}
+
+.fourth-face, .sixth-face {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fourth-face .column, .sixth-face .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fifth-face {
+  display: flex;
+  justify-content: space-between;
+}
+  
+.fifth-face .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+  
+.fifth-face .column:nth-of-type(2) {
+  justify-content: center;
+}
+
+/* OTHER STYLES */
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: center;
+  flex-wrap: wrap;
+  align-content: center;
+  font-family: 'Open Sans', sans-serif;
+  
+  background: linear-gradient(top, #222, #333);
+}
+
+[class$="face"] {
+  margin: 16px;
+  padding: 4px;
+  
+  background-color: #e7e7e7;
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+  
+  box-shadow:
+    inset 0 5px white, 
+    inset 0 -5px #bbb,
+    inset 5px 0 #d7d7d7, 
+    inset -5px 0 #d7d7d7;
+  
+  border-radius: 10%;
+}
+
+.pip {
+  display: block;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin: 4px;
+
+  background-color: #333;
+  box-shadow: inset 0 3px #111, inset 0 -3px #555;
+}
+	</style>
+<script type="text/javascript">
+    var xmlhttp;
+    var map;
+    function loadMap() {
+        map = new BMap.Map("container");
+        var point = new BMap.Point(22.00000, 17.81722);
+        map.centerAndZoom(point, 5);
+    }
+    function loadXMLDoc(url) {
+        xmlhttp = null;
+        if (window.XMLHttpRequest) {// code for all new browsers
+            xmlhttp = new XMLHttpRequest();
+        }
+        else if (window.ActiveXObject) {// code for IE5 and IE6
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        if (xmlhttp != null) {
+            xmlhttp.onreadystatechange = state_Change;
+            xmlhttp.open("POST", url, true);
+            xmlhttp.send(null);
+        }
+        else {
+            alert("Your browser does not support XMLHTTP.");
+        }
+    }
+
+    function state_Change() {
+        if (xmlhttp.readyState == 4) {// 4 = "loaded"
+            if (xmlhttp.status == 200) {// 200 = OK
+                // ...our code here...
+                var points = eval(xmlhttp.responseText);
+                for (var i = 0; i < points.length;i++){
+                    addPoint(map, points[i].jing, points[i].wei, points[i].information);
+                }
+     
+            }
+            else {
+                alert("Problem retrieving XML data");
+            }
+        }
+    }
+
+    function addPoint(map, jing, wei, message) {
+        var point = new BMap.Point(jing, wei);
+        var mark = new BMap.Marker(point);
+        map.addOverlay(mark);
+        var opts = {
+            width: 250,     // 信息窗口宽度    
+            height: 100,     // 信息窗口高度    
+            title: "冲突信息"  // 信息窗口标题   
+        }
+        var infoWindow = new BMap.InfoWindow(message, opts);  // 创建信息窗口对象    
+        mark.addEventListener("click", function () {
+            map.openInfoWindow(infoWindow, point);
+        });
+    }
+    
+    var test={x:1,y:2}
+    alert(test.x);
+</script>
+
+</head>
+<body>
+<div id="Javascript_object_test">
+  
+</div>
+	<div class="first-face">
+  <span class="pip"></span>
+</div>
+<div class="second-face">
+  <span class="pip"></span>
+  <span class="pip"></span>
+</div>
+<div class="third-face">
+  <span class="pip"></span>
+  <span class="pip"></span>
+  <span class="pip"></span>
+</div>
+<div class="fourth-face">
+  <div class="column">
+    <span class="pip"></span>
+    <span class="pip"></span>
+  </div>
+  <div class="column">
+    <span class="pip"></span>
+    <span class="pip"></span>
+  </div>
+</div>
+<div class="fifth-face">
+  <div class="column">
+    <span class="pip"></span>
+    <span class="pip"></span>
+  </div>
+  <div class="column">
+    <span class="pip"></span>
+  </div>
+  <div class="column">
+    <span class="pip"></span>
+    <span class="pip"></span>
+  </div>
+</div>
+<div class="sixth-face">
+  <div class="column">
+    <span class="pip"></span>
+    <span class="pip"></span>
+    <span class="pip"></span>
+  </div>
+  <div class="column">
+    <span class="pip"></span>
+    <span class="pip"></span>
+    <span class="pip"></span>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+	<title></title>
+	<style type="text/css">
+	.div1
+{
+width:200px;
+height:80px;
+background:red;
+border: 3px solid red;
+animation:myfirst 1s;
+-moz-animation:myfirst 1s; /* Firefox */
+-webkit-animation:myfirst 1s; /* Safari and Chrome */
+-o-animation:myfirst 1s; /* Opera */
+-webkit-animation:myfirst 0.5s infinite linear;
+animation:myfirst 0.5s infinite linear;
+text-align: center;
+}
+
+@keyframes myfirst
+{
+from {border: 3px solid red;;}
+to {border: 3px solid white;;}
+}
+
+@-moz-keyframes myfirst /* Firefox */
+{
+from {border: 3px solid red;;}
+to {border: 3px solid white;}
+}
+
+@-webkit-keyframes myfirst /* Safari and Chrome */
+{
+from {border: 3px solid red;}
+to {border: 3px solid white;}
+}
+
+@-o-keyframes myfirst /* Opera */
+{
+from {border: 3px solid red;}
+to {border: 3px solid white;}
+}
+.change{
+	width:200px;
+height:80px;
+background:blue;
+text-align: center;
+}
+	</style>
+	<script type="text/javascript">
+function change(e){
+	e.className="change";
+}
+	</script>
+</head>
+<body>
+<div id="div1" class="div1" onclick="change(this)">警报</div>
+</body>
+</html>

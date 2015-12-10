@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>数组---Javascript</title>
+	<script type="text/javascript">
+		var empty=[];	//一个空数组
+		var o={};		//创建一个空对象
+		print(typeof o);
+		var misc=[1.1,true,"a"];//三个不同类型的元素
+	// unshift shift 与 push pop的作用一样， 区别在于 前者在数组的头部进行操作，后者在尾部
+		misc.unshift(2,3);
+		misc.shift();
+	//forEach方法从头至尾遍历数组，为每个元素调用指定的函数
+		var data=[1,2,3,4,5,6,7,8,9]
+		var sum=0;
+		data.forEach(function(value){sum+=value});
+		//forEach在遍历结束前无法停止，要想停止需要将其放在try块中，并抛出异常
+		function foreach(a,f,t){
+			try{a.forEach(f,t);}
+			catch(e){
+				if(e===foreach.break)return;
+				else throw e;
+			}
+		}
+		foreach.break=new Error("StopIteration");
+		
+		
+		print(sum);
+		print(misc.slice(0,2));
+		var newArrayWithNoParam=new Array();
+		var newArray=new Array(10);	//长度为10的数组
+
+
+function print(e){
+	console.log(e);	
+}
+	</script>
+</head>
+<body>
+
+</body>
+</html>

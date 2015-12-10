@@ -1,0 +1,58 @@
+<!doctype html>
+<html ng-app>
+    <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="jquery-2.1.4.js"></script>
+        <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+        <style type="text/css">
+			#content{
+				position: relative;
+				width:100px;
+				height: 100px;
+				border: 1px solid #0050D0;
+				background-color: #96E555;
+				cursor: pointer;
+			}
+        </style>
+    </head>
+    <body>
+        Hello {{'World'}}!
+        <div id="content">
+			外层DIV
+			<span>内层span元素</span>
+			外层DIV
+        </div>
+        <div id="msg"></div>
+    </body>
+    <script type="text/javascript">
+    $(function(){
+    	$("span").on("click",function(event) {
+    		/* Act on the event */
+    		var txt=$('#msg').html()+"<p>内层span元素被单击.</p>";
+    		$('#msg').html(txt);
+    		event.stopPropagation();
+    	});
+    	$("#content").on("click",function(event) {
+    		/* Act on the event */
+    		$(this).animate({left:"30%",height:"200px"},300);
+    		$(this).fadeOut(1000);
+    		var txt=$('#msg').html()+"<p>内层DIV元素被单击.</p>";
+    		$('#msg').html(txt);
+    	});
+    	$("body").on("click",function(event) {
+    		/* Act on the event */
+    		var txt=$('#msg').html()+"<p>body被单击.</p>";
+    		$('#msg').html(txt);
+    	});
+
+    	$("html").mousedown(function(event) {
+    			/* Act on the event */
+    		
+    		if(event.which==3){
+    			document.oncontextmenu=false;
+    		}
+    	});
+    	$("#content").trigger("click");
+    })
+    </script>
+</html>
