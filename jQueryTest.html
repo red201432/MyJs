@@ -3,8 +3,11 @@
     <head>
     <meta charset="utf-8">
     <script type="text/javascript" src="jquery-2.1.4.js"></script>
-        <script src="http://code.angularjs.org/angular-1.0.1.min.js"></script>
+        <script src="angular-1.0.1.min.js"></script>
         <style type="text/css">
+        *{
+			margin: auto;
+        }
 			#content{
 				position: relative;
 				width:100px;
@@ -12,17 +15,43 @@
 				border: 1px solid #0050D0;
 				background-color: #96E555;
 				cursor: pointer;
+				overflow: hidden;
+			}
+			.show{
+				width: 800px;
+				overflow: hidden;
+				background-color: #96E555;
+			}
+		.v_content{
+			background-color: #96E555;
+			height: 200px;
+			width: 700px;
+			overflow: hidden;
+		}
+		.v_content_list{
+			top:20px;
+			height: 180px;
+		}
+		 ul{
+				list-style: none;
+			}
+		 li{
+				float: left;
+			}
+			#v_content_list{
+				overflow: hidden;
 			}
         </style>
     </head>
     <body>
         Hello {{'World'}}!
         <div id="content">
-			外层DIV
+			外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV外层DIV
 			<span>内层span元素</span>
 			外层DIV
         </div>
         <div id="msg"></div>
+      
     </body>
     <script type="text/javascript">
     $(function(){
@@ -30,15 +59,32 @@
     		/* Act on the event */
     		var txt=$('#msg').html()+"<p>内层span元素被单击.</p>";
     		$('#msg').html(txt);
+    		$("msg").toggle();
     		event.stopPropagation();
     	});
+
+    	
     	$("#content").on("click",function(event) {
     		/* Act on the event */
-    		$(this).animate({left:"30%",height:"200px"},300);
-    		$(this).fadeOut(1000);
+    		$(this).animate({left:'-='+$(this).width(),height:"200px"},300);
+    		//$(this).fadeOut(1000);
+    		// $(this).stop().animate({height:"150"},200).animate({width:"300"},300);
+    		// $(this).toggle();
+    		console.log($(this).position().left);
     		var txt=$('#msg').html()+"<p>内层DIV元素被单击.</p>";
     		$('#msg').html(txt);
     	});
+
+    	$("#content").hover(function(){
+    		$(this).stop().animate({height:"150"},200).animate({width:"300"},300);
+    	},function(){
+    		$(this).stop().animate({height:"22"},200).animate({height:"60"},300);
+    	});
+
+    	// if(!$("#content").is(":animated")){	//判断元素是否在处于动画状态
+    	// 	alert(" Hello World !!!");
+    	// }
+
     	$("body").on("click",function(event) {
     		/* Act on the event */
     		var txt=$('#msg').html()+"<p>body被单击.</p>";

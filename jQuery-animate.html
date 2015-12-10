@@ -1,0 +1,130 @@
+ <!doctype html>
+<html ng-app>
+    <head>
+    <meta charset="utf-8">
+    <script type="text/javascript" src="jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="angular-1.0.1.min.js"></script>
+    <style type="text/css">
+		 *{
+			margin: auto;
+        }
+			
+		.v_show{
+				width: 800px;
+				overflow: hidden;
+		}
+		.v_caption{
+			background-color: #EFCDA1;
+			/*display: list-item;*/
+			padding: 10px;
+		}
+		.v_caption *{
+			display: inline-block;
+		}
+		.v_content{
+			margin-top: 10px;
+			height: 200px;
+			/*width: 660px;*/
+			/*overflow: hidden;*/
+		}
+		.v_content_list{
+			display: block;
+			top:20px;
+			height: 200px;
+			white-space:  nowrap;
+			/*overflow: hidden;*/
+			
+		}
+		 ul{
+				list-style: none;
+			}
+		 li{
+				display: inline-block;
+				background-color: #96E555;
+			}
+		
+			.current{
+				color: blue;
+				font-size: 20px;
+				font-weight: 400;
+			}
+    </style>
+    <script type="text/javascript">
+    $(function(){
+
+    	var page=1;
+    	var i=4;
+    	$("span.next").on("click",function(){
+    		var $parent=$(this).parents("div.v_show");
+    		var $v_show=$parent.find("div.v_content_list");
+    		var $v_content=$parent.find("div.v_content");
+
+    		var v_width=$v_content.width();
+    		var len=$v_show.find("li").length;
+    		var page_count=Math.ceil(len/i);
+    		$v_show.animate({left:'-='+v_width},300);
+    		if(page==page_count){
+    			$v_show.animate({left:'0px'},"slow");
+    		}else{
+    			$v_show.animate({left:'-='+v_width},"slow");//向左移动
+    			page++;
+    		}
+    		console.log($v_show.position().left);
+    		console.log(v_width);
+    		$parent.find("span").eq((page-1)).addClass("current").siblings().removeClass("current");
+    	})
+    })
+    </script>
+    </head>
+    <body>
+  		<div class="v_show">
+        	<div class="v_caption">
+        		<h2 class="cartoon" title="卡通动漫">卡通动漫</h2>
+        		<div class="highlight_tip">
+        			<span class="current">1</span><span>2</span><span>3</span><span>4</span>
+        		</div>
+        		<div  class="change_btn">
+        		<span class="prev">上一页</span>
+        		<span class="next">下一页</span>
+        		</div>
+        		<em><a href="#">更多>></a></em>
+        	</div>
+        	<div class="v_content">
+				<div class="v_content_list">
+					<ul>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王1</a></h4><span>播放:<em>28267</em></span>
+						</li>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王2</a></h4><span>播放:<em>28267</em></span>
+						</li>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王3</a></h4><span>播放:<em>28267</em></span>
+						</li>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王4</a></h4><span>播放:<em>28267</em></span>
+						</li>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王5</a></h4><span>播放:<em>28267</em></span>
+						</li>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王6</a></h4><span>播放:<em>28267</em></span>
+						</li>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王7</a></h4><span>播放:<em>28267</em></span>
+						</li>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王8</a></h4><span>播放:<em>28267</em></span>
+						</li>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王9</a></h4><span>播放:<em>28267</em></span>
+						</li>
+						<li>
+						<a href="#"><img src="" width="150px" height="150px"></a><h4><a href="#">海贼王10</a></h4><span>播放:<em>28267</em></span>
+						</li>
+					</ul>
+				</div>        		
+        	</div>
+        </div>
+    </body>
+</html>
