@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+    <script type="text/javascript" src="jquery-2.1.4.js"></script>
+    <script type="text/javascript" src="angular-1.0.1.min.js"></script>
+	<title></title>
+</head>
+<body>
+<input id="get_value" type="button" value=" Get value" />
+<span id="show_value"></span>
+</body>
+<script type="text/javascript">
+	$(function() {
+		// body...
+		$("#get_value").on("click",function(){
+			$.get("https://www.baidu.com/?tn=39042058_4_oem_dg",function(data){
+				$("#show_value").html(data);
+			})
+		})
+	})
+</script>
+</html>
