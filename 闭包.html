@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+	var counter1=0;
+	function incrementcounter1(){
+		counter1=counter1+1;
+		console.log("Number of events : " + counter1);
+	}
+	var counter2=0;
+	function incrementcounter2(){
+		counter2=counter2+1;
+		console.log("Number of events : " + counter2);
+	}
+	incrementcounter1();
+	incrementcounter2();
+	incrementcounter1();
+
+	//引入第一个闭包
+	function createCounter(){
+		var counter=0;
+		function increment(){
+			counter=counter+1;
+			console.log("Number of events : "+counter);
+		}
+		return increment;
+	}
+	//创建两个计数器
+	var counter11=createCounter();
+	var counter22=createCounter();
+	counter11();//创建新的计数器时，实际上生成新的函数，每个新生成的函数，都会保持在createCounter（）所创建的counter的变量引用。在某种意义上，被返回的函数记住了它被创建时的环境。在这里需要提醒大家注意的是，内部变量 counter 都是独立存在于每个作用域！例如，如果我们创建两个计数器，那么它们都会在闭包体内会分配一个新的 counter 变量。
+	counter11();// 2
+	counter22();//返回1
+	counter11();// 3
+	function createCounter1(counterName){
+		var counter=0;
+	   function	display(){
+			console.log("Number of " + counterName + " : " + counter);
+		}
+		function increment(){
+			counter=counter+1;
+			display();
+		}
+		function decrement(){
+			counter=counter-1;
+			display();
+		}
+		return {
+			increment:increment,
+			decrement:decrement
+		};
+	}
+	var counter111=createCounter1("FirstCounter");
+	counter111.increment();
+	counter111.decrement();
+
+/*
+	闭包与类相似，都会将一些能操作内部数据的函数联系在一起。因此，你能在任何地方像使用对象一样使用闭包。
+	通过闭包能够很简单的引入抽象数据类型。
+	比如实现一个堆栈。
+*/
+	function createStack(){
+		var elements=[];	//创建一个空数组
+		return {
+			push:function(e){elements.unshift(e);},
+			pop:function(){return elements.shift();},
+			display:function(){return elements.toString();}			
+		};
+	}
+	var stack = createStack();
+	stack.push(3);
+	stack.push(4);
+	stack.pop();
+	console.log(stack.display());
+	
+</script>
+</html>

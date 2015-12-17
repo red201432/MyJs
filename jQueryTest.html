@@ -5,6 +5,89 @@
     <script type="text/javascript" src="jquery-2.1.4.js"></script>
         <script src="angular-1.0.1.min.js"></script>
         <style type="text/css">
+		
+		.ec-circle{
+    width: 192px;
+    height: 192px;
+	line-height:192px;
+	-webkit-border-radius: 210px;
+	-moz-border-radius: 210px;
+	border-radius: 50%;
+	text-align: center;
+    overflow: hidden;
+	font-family:'Kelly Slab', Georgia, serif;
+    
+	-webkit-box-shadow: 
+        inset 0 0 0 230px rgba(38,172,196,0.8),
+		inset 0 0 0 0px #26aca9;
+	-moz-box-shadow: 
+        inset 0 0 0 230px rgba(38,172,196,0.8),
+		inset 0 0 0 0px #26aca9;
+	box-shadow: 
+        inset 0 0 0 230px rgba(38,172,196,0.8),
+		inset 0 0 0 0px #26aca9;
+	-webkit-transition: box-shadow 400ms ease-in-out;
+	-moz-transition: box-shadow 400ms ease-in-out;
+	-o-transition: box-shadow 400ms ease-in-out;
+	-ms-transition: box-shadow 400ms ease-in-out;
+	transition: box-shadow 400ms ease-in-out;
+	/*For IE < 9 so that we have some kind of effect */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+	display: block;
+	outline: none;
+}
+.ec-circle-bg-1{background: #26aca9 url(../images/touxiang/4.jpg) no-repeat center center;}
+.ec-circle-bg-2{background: #26aca9 url(../images/touxiang/5.jpg) no-repeat center center;}
+.ec-circle-bg-3{background: #26aca9 url(../images/touxiang/1.jpg) no-repeat center center;}
+.ec-circle-bg-4{background: #26aca9 url(../images/touxiang/2.jpg) no-repeat center center;}
+.ec-circle-bg-5{background: #26aca9 url(../images/touxiang/3.jpg) no-repeat center center;}
+.ec-circle-hover{
+    -webkit-box-shadow: 
+		inset 0 0 0 0 rgba(0,0,0,0.6),
+		inset 0 0 0 00px #c18167,
+		0 0 10px rgba(0,0,0,0.3);
+	-moz-box-shadow: 
+		inset 0 0 0 0 rgba(0,0,0,0.6),
+		inset 0 0 0 00px #c18167,
+		0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 
+		inset 0 0 0 0 rgba(0,0,0,0.6),
+		inset 0 0 0 0px #c18167,
+		0 0 10px rgba(0,0,0,0.3);
+	/*For IE < 9 so that we have some kind of effect */
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+}
+/* Text inside of circle */
+
+.ec-circle p{
+
+     height:20px;
+	 font-family:"微软雅黑";
+    text-shadow: 0px 0px 100px #fff;
+	
+    -webkit-transition: text-shadow 400ms ease-in-out;
+	-moz-transition: text-shadow 400ms ease-in-out;
+	-o-transition: text-shadow 400ms ease-in-out;
+	-ms-transition: text-shadow 400ms ease-in-out;
+	transition: text-shadow 400ms ease-in-out;
+	
+}
+.ec-circle-hover p{
+	text-shadow: 0px 0px 1px #fff;
+}
+.ec-circle div{
+
+    height:20px;
+	font-family:"微软雅黑";
+    text-shadow: 0px 0px 100px #fff;
+	-webkit-transition: text-shadow 400ms ease-in-out;
+	-moz-transition: text-shadow 400ms ease-in-out;
+	-o-transition: text-shadow 400ms ease-in-out;
+	-ms-transition: text-shadow 400ms ease-in-out;
+	transition: text-shadow 400ms ease-in-out;
+	
+}
+
         *{
 			margin: auto;
         }
@@ -51,6 +134,86 @@
 			外层DIV
         </div>
         <div id="msg"></div>
+        <div class="about_main"> 
+  <div id="about_content" class="about_content_g">
+      <div style=" height:192px;margin-top:270px;">
+            <div style="width:192px; float:left;">
+            <a href="javascript:void(0)" id="circle" class="ec-circle ec-circle-bg-1">
+             <p style="font-size:14px; font-weight:bold;">咖啡，音乐，伙伴</p>
+                <p style="padding-left:65px;">--- 大卫</p>
+               
+            </a>
+            </div>
+            <div style="width:192px;float:right;">
+            <a href="javascript:void(0)" id="circle" class="ec-circle ec-circle-bg-2">
+                <p style="font-size:14px; font-weight:bold;line-height:15px; margin-top:80px; ">Do other men, for they would do you</p>
+                <p style="padding-left:85px;margin-top:-70px;">--- 然</p>
+            </a>
+            </div>
+            <div style="clear:both;"></div> 
+      </div>
+      <div style=" height:192px;margin-top:0px;">
+            <div style="width:192px; float:left; margin-left:87px;">
+            <a href="javascript:void(0)" id="circle" class="ec-circle ec-circle-bg-3">
+                 <p style="font-size:14px; font-weight:bold;">Make different </p>
+                <p style="padding-left:50px;">--JackLee</p>
+            </a>
+            </div>
+            <div style="width:192px;float:right; margin-right:87px;">
+            <a href="javascript:void(0)" id="circle" class="ec-circle ec-circle-bg-4">
+               <p style="font-size:14px; font-weight:bold;">唯一能限制程序员的只是想象力</p>
+                <p style="padding-left:79px;">--- 文心</p>
+            </a>
+            </div>
+            <div style="clear:both;"></div> 
+       
+      </div>
+      <div style=" height:192px;margin-top:-109px;">
+            <div style="width:192px; margin:auto;">
+            <a href="javascript:void(0)" id="circle" class="ec-circle ec-circle-bg-5">
+                 <p style="font-size:14px; font-weight:bold;">品味设计，品位自由的心灵</p>
+                <p style="padding-left:80px;">--- Cindy</p>
+            </a>
+            </div>
+      </div>
+  
+  </div>
+  <div class="about_content_text">
+     <h3>关于我们</h3>
+     <div style="height:40px;"></div>
+     <div>我们是一家高科技互联网公司，由多位资深的专业人士创立。我们专注于互联网方向的研发与应用，为各类客户已经提供了近5年的互联网应用服务。</div>
+     <div>我们致力于为公司企业、事业单位和政府机构全方位的互联网应用提供一站式解决方案，帮助客户应用互联网创造价值提高成效。</div>
+     <div>我们是一群80+90后，我们对待事物有自己的态度，我们充满激情和理想，同时也明白脚踏实地的意义，在我们眼中，产品就是一件艺术品。从我们这，得到的只有极致。</div>   
+  
+  </div>
+  <div style="clear:both;"></div>
+</div>
+
+
+<script type="text/javascript">
+$(function() {
+
+$('.ec-circle').circlemouse({
+	onMouseEnter: function(el) {
+	    el.addClass('ec-circle-hover');
+	    el.children().css('display','none');
+		$('#about_content').addClass('about_content_k');
+	},
+	onMouseLeave: function(el) {
+		
+		 el.removeClass('ec-circle-hover');
+		 el.children().css('display','block');
+		 $('#about_content').removeClass('about_content_k');
+	},
+	onClick: function(el) {
+		
+		//alert('clicked');
+		
+	}
+});
+
+});
+</script>
       
     </body>
     <script type="text/javascript">
@@ -100,5 +263,185 @@
     	});
     	$("#content").trigger("click");
     })
+
+
+(function( $, undefined ) {
+	
+	$.CircleEventManager 			= function( options, element ) {
+	
+		this.$el			= $( element );
+		
+		this._init( options );
+		
+	};
+	
+	
+	$.CircleEventManager.defaults 	= {
+		onMouseEnter	: function() { return false },
+		onMouseLeave	: function() { return false },
+		onClick			: function() { return false }
+    };
+	
+	$.CircleEventManager.prototype 	= {
+		_init 				: function( options ) {
+			
+			this.options 		= $.extend( true, {}, $.CircleEventManager.defaults, options );
+			
+			// set the default cursor on the element
+			this.$el.css( 'cursor', 'default' );
+			
+			this._initEvents();
+			
+		},
+		_initEvents			: function() {
+			
+			var _self	= this;
+			
+			this.$el.on({
+				'mouseenter.circlemouse'	: function( event ) {
+					
+					var el	= $(this),
+					
+							  circleWidth	= el.outerWidth( true ),
+							  circleHeight	= el.outerHeight( true ),
+							  circleLeft	= el.offset().left,
+							  circleTop		= el.offset().top,
+							  circlePos		= {
+								  x		: circleLeft + circleWidth / 2,
+								  y		: circleTop + circleHeight / 2,
+								  radius: circleWidth / 2
+							  };
+					
+					// save cursor type
+					var cursor	= 'default';
+					
+					if( _self.$el.css('cursor') === 'pointer' || _self.$el.is('a') )
+						cursor = 'pointer';
+						
+					el.data( 'cursor', cursor );
+					
+					el.on( 'mousemove.circlemouse', function( event ) {
+
+						var distance	= Math.sqrt( Math.pow( event.pageX - circlePos.x, 2 ) + Math.pow( event.pageY - circlePos.y, 2 ) );
+						
+						if( !Modernizr.borderradius ) {
+							
+							// inside element / circle
+							el.css( 'cursor', el.data('cursor') ).data( 'inside', true );
+							_self.options.onMouseEnter( _self.$el );
+						
+						}
+						else {
+						
+							if( distance <= circlePos.radius && !el.data('inside') ) {
+								
+								// inside element / circle
+								el.css( 'cursor', el.data('cursor') ).data( 'inside', true );
+								_self.options.onMouseEnter( _self.$el );
+								
+							}
+							else if( distance > circlePos.radius && el.data('inside') ) {
+								
+								// inside element / outside circle
+								el.css( 'cursor', 'default' ).data( 'inside', false );
+								_self.options.onMouseLeave( _self.$el );
+							
+							}
+						
+						}
+					
+					});	
+					
+				},
+				'mouseleave.circlemouse'	: function( event ) {
+					
+					var el 	= $(this);
+		
+					el.off('mousemove');
+					
+					if( el.data( 'inside' ) ) {
+					
+						el.data( 'inside', false );
+						_self.options.onMouseLeave( _self.$el );
+					
+					}
+					
+				},
+				'click.circlemouse'			: function( event ) {
+					
+					// allow the click only when inside the circle
+					
+					var el 	= $(this);
+					
+					if( !el.data( 'inside' ) )
+						return false;
+					else
+						_self.options.onClick( _self.$el );
+					
+				}
+			});
+			
+		},
+		destroy				: function() {
+			
+			this.$el.unbind('.circlemouse').removeData('inside, cursor');
+
+		}
+	};
+	
+	var logError 					= function( message ) {
+		
+		if ( this.console ) {
+			
+			console.error( message );
+			
+		}
+		
+	};
+	
+	$.fn.circlemouse				= function( options ) {
+	
+		if ( typeof options === 'string' ) {
+		
+			var args = Array.prototype.slice.call( arguments, 1 );
+
+			this.each(function() {
+			
+				var instance = $.data( this, 'circlemouse' );
+				
+				if ( !instance ) {
+					logError( "cannot call methods on circlemouse prior to initialization; " +
+					"attempted to call method '" + options + "'" );
+					return;
+				}
+				
+				if ( !$.isFunction( instance[options] ) || options.charAt(0) === "_" ) {
+					logError( "no such method '" + options + "' for circlemouse instance" );
+					return;
+				}
+				
+				instance[ options ].apply( instance, args );
+			
+			});
+		
+		} 
+		else {
+		
+			this.each(function() {
+			
+				var instance = $.data( this, 'circlemouse' );
+				if ( !instance ) {
+					$.data( this, 'circlemouse', new $.CircleEventManager( options, this ) );
+				}
+			
+			});
+		
+		}
+		
+		return this;
+		
+	};
+	
+})( jQuery );
     </script>
 </html>
