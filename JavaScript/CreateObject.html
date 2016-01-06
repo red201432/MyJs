@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Create Object</title>
+</head>
+<script type="text/javascript">
+
+	/*工厂模式构建对象*/
+	function CreatePerson(name,age,job){
+		var o=new Object();
+		o.name=name;
+		o.age=age;
+		o.job=job;
+		o.sayName=function(){
+			alert(this.name);
+		}
+		return o;
+	}
+	var person1=CreatePerson("Jim",29,"Teaching in Colleage");
+	var person2=CreatePerson("Merry",23,"Study in Colleage");
+	console.log(person1.sayName==person2.sayName);
+
+	// 构造函数模式
+	/*
+		必须使用 new 操作符，会经过以下几个步骤
+		1 创建一个新对象
+		2 将构造函数的作用域赋值给新对象
+		3 执行构造函数中的代码（为新对象添加属性）
+		4 返回新对象
+	*/
+	function PersonByConstructor(name,age,job){//按照惯例构造函数以大写字母开头
+		this.name=name;
+		this.age=age;
+		this.job=job;
+		this.sayName=function(){
+			alert(this.name);
+		};
+	}
+	var person3=new PersonByConstructor("John",24,"Software Engineer");
+	var person4=new PersonByConstructor("Greg",25,"Doctor");
+
+	console.log(person3 instanceof PersonByConstructor);//返回true
+	console.log(person4 instanceof PersonByConstructor);
+	console.log("比较 person3 和person4 的sayName方法");
+	console.log(person3.sayName==person4.sayName);
+	//person3.sayName();
+	PersonByConstructor("Lily",32,"Driver");//添加到window
+	//window.sayName();
+
+	var o=new Object();
+	PersonByConstructor.call(o,"Kristen",23,"Nurse");
+	//o.sayName();
+
+	//原型模式
+	function PersonByPrototype(){
+
+	}
+	PersonByPrototype.prototype={
+		name:"Jim",
+		age:21,
+		job:"Teaching",
+		sayName:function(){
+			console.log(this.name);
+		}
+	}
+	var person5=new PersonByPrototype();
+	person5.sayName();
+
+	var person6= new PersonByPrototype();
+	person6.name="Mick";
+	person6.sayName();
+	console.log(PersonByPrototype.prototype.isPrototypeOf(person5));//通过 prototype.isPrototypeOf 来确定PersonByPrototype是否是person5的原型
+	console.log(Object.getPrototypeOf(person6).name);//Object.getPrototypeOf可以方便的获取对象的原型，这在利用原型实现继承的情况下是非常重要的
+	console.log(person6.hasOwnProperty("name"));	//hasOwnProperty 来判断属性是实例的还是原型继承来的
+	console.log(person5.hasOwnProperty("name"));
+
+	console.log("name" in person5);
+	function hasPrototypeProperty(name,obj){
+		return !obj.hasOwnProperty("name") && ("name" in obj);
+	}
+	for (var prop in person5)
+		console.log(prop);	//返回  name，age ，job， sayName
+//组合使用原型模式和构造函数模式
+	function PersonByConstructorAndPrototype(name,age,job){
+		this.name=name;
+		this.age=age;
+		this.job=job;
+		this.friends=[];
+	}
+	PersonByConstructorAndPrototype.prototype={
+		constructor:PersonByConstructorAndPrototype,
+		sayName:function(){console.log(this.name);}
+	}
+
+	var person7=new PersonByConstructorAndPrototype("LiLei",12,"Student");
+	var person8 = new PersonByConstructorAndPrototype("LiuLei",13,"Student")
+	person7.friends.push("LiuLei");
+	person8.friends.push("LiLei");
+	console.log(person7.friends.toString());
+	console.log(person8.friends);
+//寄生构造函数模式
+	function PersonByParasitic(name,age,job){
+		var o=new Object();
+		o.name=name;
+		o.age=age;
+		o.job=job;
+		o.sayName=function(){
+			console.log(this.name);
+		};
+		return o;
+	}
+
+	var friend=new PersonByParasitic("Nicholas",20,"Software Engineer");
+	friend.sayName();
+	var friend2=new PersonByParasitic("Nick",32,"");
+	friend2.sayName();
+
+	function SuperType(){
+		this.property=true;
+	}
+
+
+
+	//继承
+	function Student(name,age,job,banji){
+		//继承属性
+		PersonByConstructorAndPrototype.call(this,name,age,job);//第 2 次调用超类构造函数
+		this.banji=banji;//特有的属性
+	}
+	//继承方法
+	Student.prototype=new PersonByConstructorAndPrototype(); //第一次调用
+	Student.prototype.sayBanji=function(){
+		console.log(this.banji);
+	}
+
+	var Jim=new Student("Jim",12,"","三年级二班");
+	// for( var prop in Jim)
+	// 	console.log(prop);
+	Jim.sayName();
+	Jim.sayBanji();
+
+	//原型式继承
+	var teacher={
+		name:"Nicholas",
+		friends:["Jim","Court"]
+	};
+	function object(o){
+		function F(){}
+		F.prototype=o;
+		return new F();
+	}
+
+	var teacherMan= Object.create(teacher,{
+	name:{
+	value:"Mick"
+	},
+	sex:{
+		value:"Man"
+	},
+	girlFriend:{
+		value:"Merry"
+	}
+	}); //object(teacher);
+	//teacherMan.name="Mick";
+	teacherMan.friends.push("Nicholas");
+	console.log(teacherMan.friends);
+	console.log(teacherMan.sex);
+	console.log(teacherMan.girlFriend);
+
+	
+
+//寄生组合式继承
+	function inheritPrototype(subType,superType){
+		var prototype=object(superType.prototype);
+		prototype.constructor=subType;		//增强对象
+		subType.prototype=prototype;		//指定对象
+	}
+
+	// var teacherWoman=Object.create(teacher,{
+	// name:{
+	// value:"Merry"
+	// },
+	// sex:{
+	// 	value:"WoMan"
+	// },
+	// boyFriend:{
+	// 	value:"Mick"
+	// }
+	// });
+	function teacher1(name){
+			this.name=name;
+			this.friends=[];
+		};
+
+	function teacherWoman(name,sex,boyFriend){
+			teacher1.call(this,name);
+			this.sex=sex;
+			this.boyFriend=boyFriend;
+	}
+	console.log("********");
+	inheritPrototype(teacherWoman,teacher1);
+	var Merry=new teacherWoman("Merry","Woman","Mick");
+	console.log(Merry.friends);
+	Merry.friends.push("Hello Kitty");
+	// teacherWoman.friends.push("Jim");
+	console.log(Merry.friends);
+	console.log(Merry.sex);
+	console.log(Merry.boyFriend);
+
+	var Alice=new teacherWoman("Alice","Woman","Jim");
+	console.log(Alice.name);
+	console.log(Alice.boyFriend);
+	console.log(Alice.friends);
+
+</script>
+<body>
+
+</body>
+</html>

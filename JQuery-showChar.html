@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>字符渐隐渐显</title>
+	<script type="text/javascript" src="jquery-2.1.4.js"></script>
+	<style type="text/css">
+		span{
+			font-size: 24px;
+			font-weight: 600;
+		}
+	</style>
+</head>
+<body>
+<div id="show"><h1>字符渐隐渐显</h1></div>
+</body>
+<script type="text/javascript">
+	function show(){
+		$(document).ready(function($) {
+		var content=$("#show");
+		var chars=new Array();
+		chars=content.text().split("");
+		console.log(content.text());
+		content.empty();
+
+		for(var i=0;i<chars.length;i++){
+			content.append('<span>'+chars[i]+"</span>");
+			setTimeout(function(){
+			content.find("span:eq("+i+")").fadeOut(1000);
+		},1000);
+		}
+	}
+	);
+	}
+	setInterval(show,5000);
+</script>
+</html>
