@@ -170,12 +170,7 @@
 
 	
 
-//寄生组合式继承
-	function inheritPrototype(subType,superType){
-		var prototype=object(superType.prototype);
-		prototype.constructor=subType;		//增强对象
-		subType.prototype=prototype;		//指定对象
-	}
+
 
 	// var teacherWoman=Object.create(teacher,{
 	// name:{
@@ -188,6 +183,12 @@
 	// 	value:"Mick"
 	// }
 	// });
+//寄生组合式继承
+	function inheritPrototype(subType,superType){
+		var prototype=object(superType.prototype);
+		prototype.constructor=subType;		//增强对象
+		subType.prototype=prototype;		//指定对象
+	}
 	function teacher1(name){
 			this.name=name;
 			this.friends=[];
@@ -212,7 +213,13 @@
 	console.log(Alice.name);
 	console.log(Alice.boyFriend);
 	console.log(Alice.friends);
-
+	console.log(Object.getPrototypeOf(Alice).name);
+	Alice.prototype=new Student();
+	Alice.boyFriend="Hello";
+	console.log(Alice.prototype);
+	console.log(Alice.sex);
+	Alice.banji="sfsdfsd";
+	console.log(Alice.banji);
 </script>
 <body>
 
