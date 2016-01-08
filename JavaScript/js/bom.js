@@ -247,9 +247,9 @@ console.log(navigator.onLine);
 	var object={
 		name:"My Object",
 		getName:function(){
-			alert("11111"+this.name);//11111 My Object
+			//alert("11111"+this.name);//11111 My Object
 			function a(){
-				alert("22222"+this.name);// 22222 The Window
+				//alert("22222"+this.name);// 22222 The Window
 				return this.name;
 			};
 			a();
