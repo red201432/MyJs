@@ -21,8 +21,6 @@ link.type="text/css";
 link.href="css/"+s;
 var head=document.getElementsByTagName("head")[0];
 head.appendChild(link);
-var el=document.getElementById("changeStyle");
-el.setAttribute("onclick","loadstyle('style.css')");
 }
 
 
@@ -83,3 +81,4 @@ row2.appendChild(cell2_2);
  
 document.body.appendChild(table); 
 
+ 
