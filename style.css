@@ -1,0 +1,21 @@
+*{ padding:0px; margin:0px; }
+body{ 
+    background:#D5DEE7; 
+}
+.boxgrid{ 
+    width: 720px; 
+	height: 701px; 
+	border: solid 2px #8399AF; 
+}
+.boxgrid img.car{ 
+	display: block;
+	position: absolute;
+    top:0;
+    left:720px;
+	transform:rotate(7deg); 
+}
+.boxgrid img.car:hover{
+	transform:rotate(0deg); 
+	transform:scale(2);
+	box-shadow: 15px #346431;
+}
