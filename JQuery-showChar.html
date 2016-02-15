@@ -8,6 +8,7 @@
 		span{
 			font-size: 24px;
 			font-weight: 600;
+visibility: visible;
 		}
 	</style>
 </head>
@@ -22,12 +23,9 @@
 		chars=content.text().split("");
 		console.log(content.text());
 		content.empty();
-
 		for(var i=0;i<chars.length;i++){
-			content.append('<span>'+chars[i]+"</span>");
-			setTimeout(function(){
-			content.find("span:eq("+i+")").fadeOut(1000);
-		},1000);
+			content.append('<span>'+chars[i]+"</span>"); //
+			content.find("span:eq("+i+")").toggle(2000);//.hide(2000);//.animate({visibility:"visible"}, 1000);
 		}
 	}
 	);

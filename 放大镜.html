@@ -4,6 +4,8 @@
 	<meta charset="utf-8">
 	<title>放大镜</title>
 	<script type="text/javascript" src="jquery-2.1.4.js"></script>
+	<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css" />
 	<style type="text/css">
 	*{
 		padding: 0;
@@ -12,13 +14,12 @@
 
 		#look{
 			width:200px;
-			height:200px;
+			
 			float: left;
 			cursor: move;
 		}
 		#look:hover{
 			border: 1px solid red;
-
 		}
 		#onlook{
 			background-color:#C6C6C6;
@@ -45,6 +46,7 @@
 	</style>
 </head>
 <body>
+<div class="container">
 <div id="look">
 	<img src="1.jpg">
  </div>
@@ -52,11 +54,15 @@
 <div id="big">
 	<img class="img" src="1.jpg">
 </div>
+
+</div>
 <script type="text/javascript">
 	(function(){
+		// var i = 0 ;
+		// setInterval(function(){$("#big").scrollLeft(10*i);i++;if (i == 80) i=2;},1000);
 		$("#look").on("mouseover",function(event) {
 			/* Act on the event */
-			$("#big").css("display","block").offset({top:0,left:200});
+			$("#big").css("display","block").offset({top:0,left:300});
 			$("#onlook").css("display","block");
 		}).on("mouseleave",function(event) {
 			/* Act on the event */
@@ -68,13 +74,12 @@
 			var y=event.clientY;
 			x=parseInt(x);
 			y=parseInt(y);
-			$("#big").scrollLeft(4*x);
-			$("#big").scrollTop(4*y);
+			$("#big").scrollLeft(1.25*x);
+			$("#big").scrollTop(1.25*y);
 			$("#onlook").css("left",x-40);
 			$("#onlook").css("top",y-40);
 		});
 	})();
-	
 </script>
 </body>
 </html>
