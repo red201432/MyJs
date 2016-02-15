@@ -1,0 +1,75 @@
+//LESS 全局定义
+@background-color:#F04363; //定义变量
+@the-border:1px;
+@border-color:#111;
+@main-font-size:18px;
+@main-font-color:white;
+@main-font-family:Monaco,verdana, sans-serif;
+@margin-size:15px;
+@padding-size:5px;
+
+
+
+
+
+//设置透明度
+.opacity(@opacity) {
+  opacity: @opacity;
+  // IE8 filter
+  @opacity-ie: (@opacity * 100);
+  filter: ~"alpha(opacity=@{opacity-ie})";
+}
+//定义圆角
+.rounded-corners (@radius: 5px) { //定义class，在其他的class中可以直接调用
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
+}
+
+//定义阴影
+.box-shadow (@x: 0, @y: 0, @blur: 1px, @color: #000) {
+  box-shadow: @arguments;
+  -moz-box-shadow: @arguments;
+  -webkit-box-shadow: @arguments;
+}
+
+.show-border(@x: 0, @y: 0, @color: #000){
+	border:@x @y @color;
+}
+.margin-padding(@x:0,@y:0,){
+	margin:@x;
+	padding:@y;
+}
+// 细节定义
+
+
+
+
+
+#imdoka-navbar-collapse-1 ul li a {
+	font-size:@main-font-size;
+	color:@main-font-color;
+}
+.imdoka-navbar{
+	background-color:@background-color;
+}
+
+.recommand{
+	background-color: @background-color;
+	margin:@margin-size;
+	padding:@padding-size;
+	font-size:@main-font-size *1.2;
+	font-family:@main-font-family;
+	
+	.rounded-corners;
+}
+.show {
+	& img{
+	.rounded-corners;
+	.opacity(0.5);
+	}
+	& img:hover{
+		.opacity(1);
+	}
+}
+

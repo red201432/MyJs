@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+*{
+	margin: 0;
+	padding: 0;
+
+}
+
+#did{
+	width: 100px;
+	position: absolute;
+	background-color: #ddd;
+	display: none;
+}
+#did ul li {
+	line-height: 25px;
+	height: 25px;
+	text-align: center;
+	list-style: none;
+}
+#did li:hover{
+	background-color: #fc0;
+}
+#red1{
+	left: 100px;
+	position: relative;
+	width: 400px;
+	height: 400px;
+	background-color: #96C;
+	
+}
+#red11{
+	/*position: absolute;*/
+	left: 10px;
+	width: 350px;
+	height: 350px;
+	background-color: #B28CD9;
+	/*z-index: -1;*/
+}
+#red111{
+	position: fixed;
+	width: 300px;
+	height:300px;
+	background-color: #CCB3E6;
+}
+</style>
+</head>
+<body>
+<div id="text1">
+
+</div>
+<div id="red1">
+	<div id="red11">
+		
+	</div>
+	<div id="red111">
+		
+	</div>
+</div>
+<div id="did">
+	<ul>
+		<li id="parse">粘贴</li>
+		<li>剪切</li>
+		<li>复制</li>
+	</ul>
+</div>
+<script type="text/javascript">
+	//获取右键单击事件
+	window.document.oncontextmenu=function(ent) {
+		// body...兼容ie 和火狐
+		var event= ent||window.event;
+		//确定弹出位置
+		//alert(event.clientX+":"+event.clientY);
+		var x=event.clientX;
+		var y=event.clientY;
+		//获取DIV节点
+		did=document.getElementById("did");
+		//显示节点
+		did.style.left=x+"px";
+		did.style.top=y+"px";
+		did.style.display="block";
+		return false;
+	}
+	window.document.onclick=function(){
+		did.style.display="none";
+	}
+	var copy=window.document.getElementById("parse");
+	copy.onclick=function(){
+		alert("you clicked");
+	}
+	// 监听鼠标左键，将选择的文字进行操作
+
+</script>
+</body>
+</html>
