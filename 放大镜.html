@@ -47,6 +47,7 @@
 </head>
 <body>
 <div class="container">
+<div style="height:400px;"></div>
 <div id="look">
 	<img src="1.jpg">
  </div>
@@ -74,8 +75,8 @@
 			var y=event.clientY;
 			x=parseInt(x);
 			y=parseInt(y);
-			$("#big").scrollLeft(1.25*x);
-			$("#big").scrollTop(1.25*y);
+			$("#big").scrollLeft(1.5*x);
+			$("#big").scrollTop(1.5*y);
 			$("#onlook").css("left",x-40);
 			$("#onlook").css("top",y-40);
 		});
